@@ -96,13 +96,23 @@ Authorization: Bearer SEU_TOKEN
 ### Usuários
 
 * `POST /users` → Criar usuário
-* `POST /login` → Login
+* `POST /login` → 
+* `GET /users/:id` → Buscar usuário
 
 ---
 
 ### Tweets
 
 * `POST /tweets` → Criar tweet (autenticado)
+* `POST /tweets/:id/reply` → Responder tweet
+* `GET /feed` → Listar feed personalizado
+
+---
+
+### Likes
+
+* `POST /tweets/:id/like` → Curtir tweet
+* `DELETE /tweets/:id/like` → Remover curtida
 
 ---
 
@@ -134,11 +144,11 @@ A API está hospedada no Render:
 
 ## Próximas funcionalidades
 
-* Feed de tweets
-* Likes em tweets
-* Replies (respostas)
-* Melhorias na autenticação
-* paginação
+* Paginação
+* Upload de imagem de perfil
+* Edição de perfil
+* Refresh Token
+* Testes automatizados
 
 ---
 
