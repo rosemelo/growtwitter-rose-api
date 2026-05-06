@@ -17,9 +17,13 @@ model User {
   id        String   @id @default(uuid())
   name      String
   username  String   @unique
+  email     String   @unique
   password  String
+  avatarUrl String?
   createdAt DateTime @default(now())
   posts     Post[]
+  followers Follow[] @relation("Following")
+  following Follow[] @relation("Follower")
 }
 
 model Post {
@@ -28,4 +32,14 @@ model Post {
   userId    String
   user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
+}
+
+model Follow {
+  id          String @id @default(uuid())
+
+  followerId  String
+  followingId String
+
+  follower    User @relation("Follower", fields: [followerId], references: [id])
+  following   User @relation("Following", fields: [followingId], references: [id])
 }
