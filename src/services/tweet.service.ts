@@ -14,3 +14,32 @@ export async function createTweetService(userId: string, content: string) {
 
   return tweet;
 }
+
+export async function getFeedService(userId: string) {
+  const following = await prisma.follow.findMany({
+    where: {
+      followerId: userId
+    },
+    select: {
+      followingId: true
+    }
+  });
+
+  const followingIds = following.map(f => f.followingId);
+
+  const feed = await prisma.post.findMany({
+    where: {
+      userId: {
+        in: [...followingIds, userId]
+      }
+    },
+    orderBy: {
+      createdAt: "desc"
+    },
+    include: {
+      user: true
+    }
+  });
+
+  return feed;
+}

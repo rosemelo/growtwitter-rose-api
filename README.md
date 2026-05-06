@@ -2,7 +2,7 @@
 
 API REST desenvolvida como desafio da Growdev, simulando uma rede social estilo Twitter (X).
 
-O objetivo do projeto é permitir que usuários possam se cadastrar, autenticar, criar tweets, seguir outros usuários e interagir com posts.
+Permite cadastro de usuários, autenticação, criação de tweets, follow entre usuários e interações com posts.
 
 ---
 
@@ -33,7 +33,7 @@ git clone https://github.com/rosemelo/growtwitter-rose-api
 ```
 
 ```bash
-cd growtwitter
+cd growtwitter-rose-api
 ```
 
 ---
@@ -124,6 +124,13 @@ Authorization: Bearer SEU_TOKEN
   * Tweets de usuários seguidos
 
 ---
+## Deploy
+
+A API está hospedada no Render:
+
+  https://growtwitter-rose-api.onrender.com
+
+---
 
 ## Próximas funcionalidades
 
@@ -131,6 +138,7 @@ Authorization: Bearer SEU_TOKEN
 * Likes em tweets
 * Replies (respostas)
 * Melhorias na autenticação
+* paginação
 
 ---
 
