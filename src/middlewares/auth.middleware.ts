@@ -8,7 +8,7 @@ export function authMiddleware(
   next: NextFunction
 ) {
   const authHeader = req.headers.authorization;
-  console.log("AUTH HEADER:", authHeader);
+  
 
   if (!authHeader) {
     return res.status(401).json({ error: "Token não enviado" });
@@ -26,9 +26,11 @@ export function authMiddleware(
       throw new Error("JWT_SECRET não configurado");
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET) as JwtPayload;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET) as any;
 
-      req.user = decoded; 
+      req.user = {
+       userId: decoded.userId
+      };
       
       return next();
     }  catch {
